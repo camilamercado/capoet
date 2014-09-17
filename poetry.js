@@ -10,22 +10,22 @@ function jcap(){
 	if (list === "adjective"){
 		
 		console.log("next should be verb");
-		min = 0;
-		max = 20;
+		min = 85;
+		max = 200;
 	}
 
 	else if (list === "noun"){
 		
 		console.log("next should be noun");
-		min = 20;
-		max = 40;
+		min = 55;
+		max = 62;
 	}
 
 	else if (list === "verb"){
 		
 		console.log("next should be article");
-		min = 20;
-		max = 40;
+		min = 201;
+		max = 250;
 	}
 
 	else {
@@ -40,13 +40,14 @@ function jcap(){
 		var img = "cimg/" + random + ".jpg";
 		console.log(img);
 		document.getElementById("captcha").src = img;
+		//document.querySelector("body").style.backgroundImage="url(" + img + ")";
 		stanza.push([img]);
 		console.log(stanza);
 
 
 		if (stanza.length === 7){
 
-			$("#stanza").empty();
+			document.getElementById("stanza").style.display = "none";
 			document.getElementById("poem").style.display = "block";
 			document.getElementById("line1").src = stanza[0];
 			document.getElementById("line2").src = stanza[1];

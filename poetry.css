@@ -3,11 +3,19 @@ body {
 	background-color: ghostwhite;
 }
 
+#container {
+
+	font-family: "andale mono";
+	opacity: 0.2;
+
+}
+
 input {
 	font-family: "andale mono" !important;
 }
 
 h1 {
+	background-color: ghostwhite;
 	margin-top: 60px;
 	width: 100%;
 	text-align: center;
@@ -15,12 +23,14 @@ h1 {
 }
 
 #stanza {
-
+	background-color: ghostwhite;
 	position: absolute; 
 	top: 140px;
 	width: 290px;
+	height: 250px;
 	margin-left: 50%;
 	left: -145px;
+	z-index: 1;
 }
 
 #captcha {
@@ -36,6 +46,7 @@ h1 {
 	width: 100%;
 	text-align: center;
 	top: 0px;
+	background-color: ghostwhite;
 }
 
 #uword {
