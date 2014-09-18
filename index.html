@@ -3,41 +3,117 @@
 <head>
 <title>Captcha Poetry</title>
 <?php include('verify.php'); ?>
-<link rel="stylesheet" type="text/css" href="poetry.css">
-<!-- all content by Jonathan Feaster (http://www.bitdesigner.com/) -->
-
+<link rel="stylesheet" type="text/css" href="capoet.css">
+<script src="http://code.jquery.com/jquery-latest.min.js"
+        type="text/javascript"></script>
 </head>
 
 <body>
 
-	<div id="container">
-	</div>
+<script type="text/javascript">
+ var RecaptchaOptions = {
+    theme : 'clean'
+ };
+ </script>
 
-		<h1>C<i>a</i>ptc<i>h</i>a <i>P</i>o<i>et</i>ry</h1>
+  <div class="formfield">
 
-
-      <form method="post" action="verify.php">
-        <?php
-          require_once('recaptchalib.php');
-          $publickey = "6LfNZfoSAAAAADzJKu7ITvFQjOLYWgPj4j9_le-w"; // you got this from the signup page
-          echo recaptcha_get_html($publickey);
-        ?>
-        <input type="submit" />
-      </form>
+    <p>completely automated test to tell computers and humans apart</p>
 
 
-		<div id ="poem">
-			
-			<img id="line1"/>
-			<img id="line2"/>
-			<img id="line3"/>
-			<img id="line4"/>
-			<img id="line5"/>
-			<img id="line6"/>
+       <form onSubmit="return validateCaptcha()">
 
-		</div>
+          <script type="text/javascript"
+             src="http://www.google.com/recaptcha/api/challenge?k=6LfNZfoSAAAAADzJKu7ITvFQjOLYWgPj4j9_le-w">
+          </script>
+          <noscript> 
+             <iframe src="http://www.google.com/recaptcha/api/noscript?k=6LfNZfoSAAAAADzJKu7ITvFQjOLYWgPj4j9_le-w"
+                 height="300" width="500" frameborder="0"></iframe>
+             <br>
+             <textarea name="recaptcha_challenge_field" rows="3" cols="40">
+             </textarea>
+             <input type="hidden" name="recaptcha_response_field"
+                 value="manual_challenge">
+          </noscript>
+          <button id="recaptchaButton" class="btn btn-primary" onclick="memory();">Submit
+      	  </button>
+
+      	</form>
+    	
+      <div id="captchaStatus"></div>
+  	
+
+  </div>
+
+      <img src="turing-mask.png" class="screen">
+
+      <div class="mask">
+      		<img src="trans.png" id="line6"/>
+      		<img src="trans.png" id="line5"/>
+      		<img src="trans.png" id="line4"/>
+      		<img src="trans.png" id="line3"/>
+      		<img src="trans.png" id="line2"/>
+      		<img src="trans.png" id="line1"/>
+      	</div>
+
+      <img src="turing.jpg" class="portrait">
+		
 
 
+
+<script>
+
+  function validateCaptcha(){
+
+      challengeField = $("input#recaptcha_challenge_field").val();
+      responseField = $("input#recaptcha_response_field").val();
+      
+      var action = $.ajax({
+      type: "POST",
+      url: "verify.php",
+      data: "recaptcha_challenge_field=" + challengeField + "&recaptcha_response_field=" + responseField,
+      async: false
+      }).responseText;
+        
+      var entry = document.getElementById("recaptcha_response_field").value;;
+      
+      if( entry === "") {
+      	$("#captchaStatus").html("Humanity as of yet undetermined");
+          return false;
+      } else {	
+   		 $("#captchaStatus").html("Success. Submitting form.");
+          Recaptcha.reload();
+          return false; 
+      }
+  }
+
+stanza = [];
+counter = 0;
+
+  function memory(){
+
+  	counter = (counter + 1); 
+  	var imgblock= "line" + counter;
+  	var img  = document.getElementById("recaptcha_challenge_image").src;
+  	var text = document.getElementById("recaptcha_response_field").value;
+    stanza.push([img]);
+  	
+    for(var i=0; i<stanza.length; i++) {
+
+  		document.getElementById(imgblock).src = stanza[i++];
+
+  		if(stanza.length >= 6){
+  			counter = 0;
+  			stanza.length = 0;
+  		}else{
+  			return false;
+  		}
+
+  	}
+  	
+  }
+
+</script>
 
 </body>
 </html>

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+  <head>
+        <title>reCAPTCHA</title>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css">
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+        <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+    </head>
+    <body>
+        <form id="my_form" name="my_form" method="post">
+            <input type="submit" value="Submit My Form" />
+        </form>
+ 
+        <form id="another_form" name="another_form" method="post">
+            <input type="submit" value="Submit Another Form" />
+        </form>
+ 
+        <div id="recaptchaModal" title="reCAPTCHA" style="display:none;">
+            <p>Please fill out this reCAPTCHA to submit this form.</p>
+            <div id="recaptcha_block"></div>
+        </div>
+ 
+        <script>
+            $('form').on('submit', function(e){
+                e.preventDefault();
+                var formID = e.currentTarget.id;
+ 
+                $("#recaptchaModal").dialog({
+                    modal: true,
+                    resizable: false,
+                    width: 400,
+                    open: function(e, ui){
+                        Recaptcha.create("6LfNZfoSAAAAADzJKu7ITvFQjOLYWgPj4j9_le-w",
+                            "recaptcha_block",
+                            {
+                                theme: "red",
+                                callback: Recaptcha.focus_resonse_field
+                            }
+                        );
+                    },
+                    close: function(e, ui){
+                        Recaptcha.destroy();
+                    },
+                    buttons: {
+                        "Validate reCAPTCHA": function(){
+                            $.ajax({
+                                url: "/url/to/verify/recaptcha",
+                                type: 'post',
+                                data: {
+                                    challenge: Recaptcha.get_challenge(),
+                                    response: Recaptcha.get_response(),
+                                    additional_data: here
+                                },
+                                success: function(data){
+                                    if(data != "success"){
+                                        alert("The reCAPTCHA wasn't entered correctly. Please try again.");
+                                        Recaptcha.reload();
+                                    }
+                                    else{
+                                        //-- submit your form with AJAX + MVC-style
+                                        $.ajax({
+                                            url: "/your/submission/url/"+formID,
+                                            type: "post",
+                                            data: $('#'+formID).serialize(),                                
+                                            success: function(data){
+                                                //-- forward user to your thank you page
+                                                window.location.href = '/url/to/your/thank/you/page/'+formID;
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+                        },
+                        Cancel: function(){
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

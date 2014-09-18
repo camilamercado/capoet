@@ -1,0 +1,74 @@
+body {
+	font-family: "andale mono";
+	background-image: url(turing.jpg);
+	position: fixed;
+	top: 0px;
+	width:100%;
+	background-position: 500px 0px;
+}
+
+.formfield {
+	width: 60%;
+	height: 100%;
+	min-height: 1000px;
+	background-color: whitesmoke;
+	float: left;
+	position: absolute;
+	z-index: 4;
+	top: 0px;
+	padding-top: 100px;
+	padding-left: 10%;
+	left: 0px;
+	opacity: 0.9;
+}
+
+.portrait {
+	position: fixed;
+	top: 0px;
+	right: -100px;
+	z-index: 1;
+
+}
+
+.screen {
+	position: fixed;
+	top: 0px;
+	right: -100px;
+	z-index: 3;
+
+}
+
+.recaptchatable .recaptcha_image_cell{
+	background-color: whitesmoke!important;
+}
+
+p {
+	font-size: 13px;
+	padding-bottom: 20px;
+}
+
+.mask {
+	width: 410px;
+	height: auto;
+	position: fixed;
+	right: 110px;
+	top: 200px;
+	z-index: 2;
+	opacity: 0.7;
+}
+
+.mask img {
+	width: 410px;
+	height: 75px;
+	border:0px!important;
+	margin-right: 10%;
+	margin-bottom: -3px;
+}
+
+
+#line1 {border:none;}
+
+#captchaStatus {
+	padding-top: 20px;
+	font-size: 13px;
+}
