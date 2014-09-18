@@ -16,22 +16,20 @@ function jcap(){
 
 	else if (list === "noun"){
 		
-		console.log("next should be noun");
-		min = 55;
-		max = 62;
-	}
-
-	else if (list === "verb"){
-		
-		console.log("next should be article");
+		console.log("next should be verb");
 		min = 201;
 		max = 250;
 	}
 
-	else {
+	else if (list === "verb"){
 		
-		alert("be a good human and read your instructions");
-		console.log("");
+		console.log("next should be conjunction");
+		min = 55;
+		max = 65;
+	}
+
+	else if (list === "conjunction"){
+		
 		min = 0;
 		max = 191;
 	}
