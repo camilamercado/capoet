@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Captcha Poetry</title>
-<?php include('verify.php'); ?>
+<?php include('camilamercado.github.io/capoet/verify.php'); ?>
 <link rel="stylesheet" type="text/css" href="poetry.css">
 <!-- all content by Jonathan Feaster (http://www.bitdesigner.com/) -->
 
@@ -16,9 +16,9 @@
 		<h1>C<i>a</i>ptc<i>h</i>a <i>P</i>o<i>et</i>ry</h1>
 
 
-      <form method="post" action="verify.php">
+      <form method="post" action="camilamercado.github.io/capoet/verify.php">
         <?php
-          require_once('recaptchalib.php');
+          require_once('camilamercado.github.io/capoet/recaptchalib.php');
           $publickey = "6LfNZfoSAAAAADzJKu7ITvFQjOLYWgPj4j9_le-w"; // you got this from the signup page
           echo recaptcha_get_html($publickey);
         ?>
