@@ -97,12 +97,14 @@ p {
 }
 
 #story div {
+	max-width: 650px;
 	width: auto;
 	height: auto;
 	margin-bottom: 30px;
 }
 
 #err {
+	display: none;
 	padding-top: 50px;
 	font-size: 13px;
 }

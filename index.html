@@ -40,7 +40,7 @@
 
       	</form>
     
-     <div id="err"></div>
+     <div id="err">Humanity as of yet undetermined</div>
 
     <div id="story">
       <div id="text1"></div>
@@ -48,7 +48,7 @@
       <div id="text3"></div>
       <div id="text4"></div>
       <div id="text5"></div>
-      <div id="text6"></div>
+      <div id="text0"></div>
   	</div>
 
   </div>
@@ -86,19 +86,24 @@
       var entry = document.getElementById("recaptcha_response_field").value;;
       
       if( entry === "") {
-      	$("#err").html("Humanity as of yet undetermined");
+      	
         $("#err").show();
         $(".mask").hide();
         $("#story").hide();
           return false;
+      
       } else {	
-        var textblock= "#text" + counter;
+        
         var textline = writing[counter].text;
-   		 $(textblock).html(textline);
-       $("#err").hide();
-       $("#story").show();
-       $(".mask").show();
-          Recaptcha.reload();
+        console.log(textline);
+
+        var textblock= "#text" + counter;
+         console.log(textblock);
+   		  $(textblock).html(textline);
+        $("#err").hide();
+        $("#story").show();
+        $(".mask").show();
+        Recaptcha.reload();
           return false; 
       }
   }
@@ -115,6 +120,7 @@ counter = 0;
   	var text = document.getElementById("recaptcha_response_field").value;
     stanza.push([img]);
     console.log(stanza);
+    console.log(counter);
   	
     for(var i=0; i<stanza.length; i++) {
 
@@ -134,12 +140,13 @@ counter = 0;
 
   var writing = [ 
 
-              {  'text' : "" },
-              {  'text' : "It seems probable that once the machine thinking method had started" },
-              {  'text' : "it would not take long to outstrip our feeble powers..." },
-              {  'text' : "They would be able to converse with each other to sharpen their wits." },
-              {  'text' : "At some stage therefore, we should have to expect the machines to take control." },
-              {  'text' : "- Alan Turing" }          
+      {  'text' : "- Alan Turing, Intelligent Machinery, A Heretical Theory" },
+      {  'text' : "It seems probable that once the machine thinking method had started" },
+      {  'text' : "It would not take long to outstrip our feeble powers..." },
+      {  'text' : "There would be no question of the machines dying," },
+      {  'text' : "They would be able to converse with each other to sharpen their wits." },
+      {  'text' : "At some stage therefore, we should have to expect the machines to take control." }
+      // {  'text' : "- Alan Turing, Intelligent Machinery, A Heretical Theory" }          
 
   ];
 
