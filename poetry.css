@@ -1,83 +1,66 @@
 body {
 	font-family: "andale mono";
-	background-color: ghostwhite;
-}
-
-#container {
-
-	font-family: "andale mono";
-	opacity: 0.2;
-
-}
-
-input {
-	font-family: "andale mono" !important;
-}
-
-h1 {
-	background-color: ghostwhite;
-	margin-top: 60px;
-	width: 100%;
-	text-align: center;
-	font-size: 12px;
-}
-
-#stanza {
-	background-color: ghostwhite;
-	position: absolute; 
-	top: 140px;
-	width: 290px;
-	height: 250px;
-	margin-left: 50%;
-	left: -145px;
-	z-index: 1;
-}
-
-#captcha {
-	width: 290px;
-	height: 80px;
-	position: absolute; 
-	top: 60px;
-}
-
-#instruct {
-	font-size: 10px;
-	position: absolute;
-	width: 100%;
-	text-align: center;
+	background-image: url(turing.jpg);
+	position: fixed;
 	top: 0px;
-	background-color: ghostwhite;
+	width:100%;
+	background-position: 500px 0px;
 }
 
-#uword {
-	font-family: "andale mono";
+.formfield {
+	width: 60%;
+	height: 100%;
+	min-height: 1000px;
+	background-color: whitesmoke;
+	float: left;
 	position: absolute;
-	top: 160px;
-	left: 65px;
-	text-align: center;
+	z-index: 2;
+	top: 0px;
+	padding-top: 100px;
+	padding-left: 10%;
+	left: 0px;
+	opacity: 0.9;
 }
 
-#submit {
-	font-family: "andale mono";
-	position: absolute;
+.portrait {
+	position: fixed;
+	top: 0px;
+	right: -100px;
+	z-index: 1;
+
+}
+
+.recaptchatable .recaptcha_image_cell{
+	background-color: whitesmoke!important;
+}
+
+p {
+	font-size: 13px;
+	padding-bottom: 20px;
+}
+
+.mask {
+	width: 300px;
+	height: auto;
+	position: fixed;
+	right: 200px;
 	top: 200px;
-	left: 115px;
+	z-index: 2;
 }
 
-#poem {
-
-	display: none;
-	position: absolute; 
-	top: 100px;
-	width: 290px;
-	margin-left: 50%;
-	left: -145px;
+.mask img {
+	width: 300px;
+	height: 57px;
+	border:0px!important;
+	opacity: 0.7;
+	margin-right: 10%;
+	margin-bottom: -3px;
 }
 
-#poem img {
 
-	background-color: royalblue;
-	width: 290px;
-	height: 80px;
-	margin-bottom: 10px;
+#line1 {border:none;}
+
+#captchaStatus {
+	padding-top: 20px;
+	font-size: 13px;
 }

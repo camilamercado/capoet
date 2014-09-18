@@ -4,40 +4,119 @@
 <title>Captcha Poetry</title>
 <?php include('verify.php'); ?>
 <link rel="stylesheet" type="text/css" href="poetry.css">
-<!-- all content by Jonathan Feaster (http://www.bitdesigner.com/) -->
-
+<script src="http://code.jquery.com/jquery-latest.min.js"
+        type="text/javascript"></script>
 </head>
 
 <body>
 
-	<div id="container">
+
+<script type="text/javascript">
+ var RecaptchaOptions = {
+    theme : 'clean'
+ };
+ </script>
+
+<div class="formfield">
+
+<p>completely automated test to tell computers and humans apart</p>
+
+
+ <form onSubmit="return validateCaptcha()">
+
+    <script type="text/javascript"
+       src="http://www.google.com/recaptcha/api/challenge?k=6LfNZfoSAAAAADzJKu7ITvFQjOLYWgPj4j9_le-w">
+    </script>
+
+
+    <noscript>
+      
+       <iframe src="http://www.google.com/recaptcha/api/noscript?k=6LfNZfoSAAAAADzJKu7ITvFQjOLYWgPj4j9_le-w"
+           height="300" width="500" frameborder="0"></iframe>
+       <br>
+       <textarea name="recaptcha_challenge_field" rows="3" cols="40">
+       </textarea>
+
+       <input type="hidden" name="recaptcha_response_field"
+           value="manual_challenge">
+   
+    </noscript>
+
+    <button id="recaptchaButton" class="btn btn-primary" onclick="memory();">Submit
+	</button>
+
+	</form>
+	<div id="captchaStatus"></div>
+	
+
+</div>
+
+<div class="mask">
+		<img id="line1"/>
+		<img id="line2"/>
+		<img id="line3"/>
+		<img id="line4"/>
+		<img id="line5"/>
+		<img id="line6"/>
+		<img id="line7"/>
 	</div>
 
-		<h1>C<i>a</i>ptc<i>h</i>a <i>P</i>o<i>et</i>ry</h1>
+<img src="turing.jpg" class="portrait">
+		
 
 
-      <form method="post" action="verify.php">
-        <?php
-          require_once('recaptchalib.php');
-          $publickey = "6LfNZfoSAAAAADzJKu7ITvFQjOLYWgPj4j9_le-w"; // you got this from the signup page
-          echo recaptcha_get_html($publickey);
-        ?>
-        <input type="submit" />
-      </form>
 
+<script>
 
-		<div id ="poem">
-			
-			<img id="line1"/>
-			<img id="line2"/>
-			<img id="line3"/>
-			<img id="line4"/>
-			<img id="line5"/>
-			<img id="line6"/>
+function validateCaptcha()
+{
+    challengeField = $("input#recaptcha_challenge_field").val();
+    responseField = $("input#recaptcha_response_field").val();
+    
+    var action = $.ajax({
+    type: "POST",
+    url: "verify.php",
+    data: "recaptcha_challenge_field=" + challengeField + "&recaptcha_response_field=" + responseField,
+    async: false
+    }).responseText;
+    console.log(action);
+    
+    if(action == "status")
+    {
+        $("#captchaStatus").html("Success. Submitting form.");
+        return false;
+        // Uncomment the following line in your application
+        //return true;
+    }
+    else
+    {
+        $("#captchaStatus").html("Humanity as of yet undetermined");
+        Recaptcha.reload();
+        return false;
+    }
+}
 
-		</div>
+stanza = [];
 
+function memory(){
 
+	var img  = document.getElementById("recaptcha_challenge_image").src;
+	var text = document.getElementById("recaptcha_response_field").value;
+	//stanza.push([text]);
+	stanza.push([img]);
+	console.log(stanza);
+
+		document.getElementById("line7").src = stanza[0];
+		document.getElementById("line6").src = stanza[1];
+		document.getElementById("line5").src = stanza[2];
+		document.getElementById("line4").src = stanza[3];
+		document.getElementById("line3").src = stanza[4];
+		document.getElementById("line2").src = stanza[5];
+		document.getElementById("line1").src = stanza[5];
+
+}
+
+</script>
 
 </body>
 </html>
