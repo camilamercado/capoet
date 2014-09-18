@@ -18,7 +18,7 @@
 
   <div class="formfield">
 
-    <p>completely automated test to tell computers and humans apart</p>
+    <p>completely<br> automated<br> public<br> <i>T</i>u<i>ri</i>ng test to tell<br> computers and<br>humans<br> apart</p>
 
 
        <form onSubmit="return validateCaptcha()">
@@ -39,9 +39,17 @@
       	  </button>
 
       	</form>
-    	
-      <div id="captchaStatus"></div>
-  	
+    
+     <div id="err"></div>
+
+    <div id="story">
+      <div id="text1"></div>
+      <div id="text2"></div>
+      <div id="text3"></div>
+      <div id="text4"></div>
+      <div id="text5"></div>
+      <div id="text6"></div>
+  	</div>
 
   </div>
 
@@ -78,10 +86,18 @@
       var entry = document.getElementById("recaptcha_response_field").value;;
       
       if( entry === "") {
-      	$("#captchaStatus").html("Humanity as of yet undetermined");
+      	$("#err").html("Humanity as of yet undetermined");
+        $("#err").show();
+        $(".mask").hide();
+        $("#story").hide();
           return false;
       } else {	
-   		 $("#captchaStatus").html("Success. Submitting form.");
+        var textblock= "#text" + counter;
+        var textline = writing[counter].text;
+   		 $(textblock).html(textline);
+       $("#err").hide();
+       $("#story").show();
+       $(".mask").show();
           Recaptcha.reload();
           return false; 
       }
@@ -90,6 +106,7 @@
 stanza = [];
 counter = 0;
 
+
   function memory(){
 
   	counter = (counter + 1); 
@@ -97,6 +114,7 @@ counter = 0;
   	var img  = document.getElementById("recaptcha_challenge_image").src;
   	var text = document.getElementById("recaptcha_response_field").value;
     stanza.push([img]);
+    console.log(stanza);
   	
     for(var i=0; i<stanza.length; i++) {
 
@@ -105,13 +123,27 @@ counter = 0;
   		if(stanza.length >= 6){
   			counter = 0;
   			stanza.length = 0;
+        //document.getElementById(imgblock).src = stanza[i++];
   		}else{
-  			return false;
+  			
   		}
 
   	}
   	
   }
+
+  var writing = [ 
+
+              {  'text' : "" },
+              {  'text' : "It seems probable that once the machine thinking method had started" },
+              {  'text' : "it would not take long to outstrip our feeble powers..." },
+              {  'text' : "They would be able to converse with each other to sharpen their wits." },
+              {  'text' : "At some stage therefore, we should have to expect the machines to take control." },
+              {  'text' : "- Alan Turing" }          
+
+  ];
+
+
 
 </script>
 
