@@ -1,6 +1,5 @@
 <?php
 require_once('recaptchalib.php'); // reCAPTCHA Library
-require_once('camilamercado.github.io/capoet/recaptchalib.php'); // reCAPTCHA Library
 $pubkey = "6LfNZfoSAAAAADzJKu7ITvFQjOLYWgPj4j9_le-w"; // Public API Key
 $privkey = "6LfNZfoSAAAAADMi3dlMAlIvIR7nmsEAcYjFbdyx"; // Private API Key
 
