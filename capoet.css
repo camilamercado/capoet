@@ -6,39 +6,66 @@ body {
 	font-family: "andale mono";
 	/*background-image: url(turing.jpg);*/
 	background: #626351;
-	position: fixed;
+	/*position: fixed;*/
 	top: 0px;
 	width:100%;
 	height: 100%;
 	background-position: 500px 0px;
 }
 
+.part1{
+	position: relative;
+	width: 100%;
+	height: 900px;
+}
+
+.gimmick {
+	width: 47%;
+	min-width: 550px;
+	height: 80%;
+	/*min-height: 900px;*/
+	background-image: url(capcol.jpg);
+	background-position: -200px -50px;
+	float: left;
+	position: absolute;
+	z-index: 4;
+	top: 40px;
+	left: 40px;
+	opacity: 0.6;
+	/*display: none;*/
+
+}
+
 .formfield {
-	width: 60%;
-	height: 100%;
+	width: 48%;
+	min-width: 550px;
+	height: 80%;
+	/*min-height: 900px;*/
 	background-color: whitesmoke;
 	float: left;
 	position: absolute;
 	z-index: 4;
-	top: 0px;
-	padding-top: 100px;
-	padding-left: 10%;
-	left: 0px;
-	opacity: 0.9;
+	top: 50px;
+	padding-top: 5%;
+	padding-left: 7%;
+	left: 50px;
+	opacity: 1;
 }
 
 .portrait {
+	height: 145%;
 	position: fixed;
 	top: 0px;
-	right: -100px;
+	right: -50px;
 	z-index: 1;
 
 }
 
 .screen {
+	height: 145%;
 	position: fixed;
 	top: 0px;
-	right: -100px;
+	right: -50px;
 	z-index: 3;
 
 }
@@ -60,22 +87,23 @@ body {
 
 p {
 	font-size: 13px;
-	padding-bottom: 50px;
+	padding-bottom: 2%;
+	font-style: bold;
 }
 
 .mask {
 	width: 410px;
 	height: auto;
 	position: fixed;
-	right: 110px;
-	top: 200px;
-	z-index: 2;
+	right: 25px;
+	top: 170px;
+	z-index: 4;
 	opacity: 0.7;
 }
 
 .mask img {
-	width: 410px;
-	height: 75px;
+	width: 300px;
+	height: auto;
 	border-bottom-color:white!important;
 	border-top-color:none!important;
 	margin-right: 10%;
@@ -89,7 +117,7 @@ p {
 }
 
 #story {
-	margin-top: 60px;
+	margin-top: 3%;
 	width: auto;
 	font-family: "andale mono";
 	font-size: 13px!important;
@@ -100,11 +128,18 @@ p {
 	max-width: 650px;
 	width: auto;
 	height: auto;
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 }
 
 #err {
 	display: none;
 	padding-top: 50px;
 	font-size: 13px;
+}
+
+.part2 {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	top: 900px;
 }

@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Captcha Poetry</title>
+<?php include('verify.php'); ?>
+<link rel="stylesheet" type="text/css" href="capoet.css">
+<script src="http://code.jquery.com/jquery-latest.min.js"
+        type="text/javascript"></script>
+</head>
+
+<body>
+
+<script type="text/javascript">
+ var RecaptchaOptions = {
+    theme : 'clean'
+ };
+ </script>
+
+  <div class="formfield">
+
+    <p>Comp<i>l</i>etely<br> <i>Auto</i>mated<br> Public<br> <i>T</i>u<i>ri</i>ng test to <i>tell</i><br> Co<i>pu</i>te<i>r</i>s and<br>H<i>um</i>ans<br> Ap<i>art</i></p>
+
+
+       <form onSubmit="return validateCaptcha()">
+
+          <script type="text/javascript"
+             src="http://www.google.com/recaptcha/api/challenge?k=6LfNZfoSAAAAADzJKu7ITvFQjOLYWgPj4j9_le-w">
+          </script>
+          <noscript> 
+             <iframe src="http://www.google.com/recaptcha/api/noscript?k=6LfNZfoSAAAAADzJKu7ITvFQjOLYWgPj4j9_le-w"
+                 height="300" width="500" frameborder="0"></iframe>
+             <br>
+             <textarea name="recaptcha_challenge_field" rows="3" cols="40">
+             </textarea>
+             <input type="hidden" name="recaptcha_response_field"
+                 value="manual_challenge">
+          </noscript>
+          <button id="recaptchaButton" class="btn btn-primary" onclick="memory();">Submit
+      	  </button>
+
+      	</form>
+    
+     <div id="err">Humanity as of yet undetermined</div>
+
+    <div id="story">
+      <div id="text1"></div>
+      <div id="text2"></div>
+      <div id="text3"></div>
+      <div id="text4"></div>
+      <div id="text5"></div>
+      <div id="text0"></div>
+  	</div>
+
+  </div>
+
+      
+
+      <div class="mask">
+      		<img src="trans.png" id="line6"/>
+      		<img src="trans.png" id="line5"/>
+      		<img src="trans.png" id="line4"/>
+      		<img src="trans.png" id="line3"/>
+      		<img src="trans.png" id="line2"/>
+      		<img src="trans.png" id="line1"/>
+      	</div>
+
+      <img src="bombe.jpg" class="portrait">
+		
+
+
+
+<script>
+
+  function validateCaptcha(){
+
+      challengeField = $("input#recaptcha_challenge_field").val();
+      responseField = $("input#recaptcha_response_field").val();
+      
+      var action = $.ajax({
+      type: "POST",
+      url: "verify.php",
+      data: "recaptcha_challenge_field=" + challengeField + "&recaptcha_response_field=" + responseField,
+      async: false
+      }).responseText;
+        
+      var entry = document.getElementById("recaptcha_response_field").value;;
+      
+      if( entry === "") {
+      	
+        $("#err").show();
+        $(".mask").hide();
+        $("#story").hide();
+          return false;
+      
+      } else {	
+        
+        var textline = writing[counter].text;
+        console.log(textline);
+
+        var textblock= "#text" + counter;
+         console.log(textblock);
+   		  $(textblock).html(textline);
+        $("#err").hide();
+        $("#story").show();
+        $(".mask").show();
+        Recaptcha.reload();
+          return false; 
+      }
+  }
+
+stanza = [];
+counter = 0;
+
+
+  function memory(){
+
+  	counter = (counter + 1); 
+  	var imgblock= "line" + counter;
+  	var img  = document.getElementById("recaptcha_challenge_image").src;
+  	var text = document.getElementById("recaptcha_response_field").value;
+    stanza.push([img]);
+    console.log(stanza);
+    console.log(counter);
+  	
+    for(var i=0; i<stanza.length; i++) {
+
+  		document.getElementById(imgblock).src = stanza[i++];
+
+  		if(stanza.length >= 6){
+  			counter = 0;
+  			stanza.length = 0;
+        //document.getElementById(imgblock).src = stanza[i++];
+  		}else{
+  			
+  		}
+
+  	}
+  	
+  }
+
+  var writing = [ 
+
+      {  'text' : "- Alan Turing, Intelligent Machinery, A Heretical Theory" },
+      {  'text' : "It seems probable that once the machine thinking method had started" },
+      {  'text' : "It would not take long to outstrip our feeble powers..." },
+      {  'text' : "There would be no question of the machines dying," },
+      {  'text' : "They would be able to converse with each other to sharpen their wits." },
+      {  'text' : "At some stage therefore, we should have to expect the machines to take control." }
+      // {  'text' : "- Alan Turing, Intelligent Machinery, A Heretical Theory" }          
+
+  ];
+
+
+
+</script>
+
+</body>
+</html>
+
