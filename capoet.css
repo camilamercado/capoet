@@ -55,6 +55,7 @@ body {
 .portrait {
 	height: 145%;
 	position: fixed;
+	max-height: 1500px;
 	top: 0px;
 	right: -50px;
 	z-index: 1;
@@ -63,6 +64,7 @@ body {
 
 .screen {
 	height: 145%;
+	max-height: 1500px;
 	position: fixed;
 	top: 0px;
 	right: -50px;
@@ -92,21 +94,21 @@ p {
 }
 
 .mask {
-	width: 410px;
-	height: auto;
+	width: 30%;
+	height: 100%;
 	position: fixed;
-	right: 25px;
+	right: 10%;
 	top: 170px;
 	z-index: 2;
 	opacity: 0.7;
 }
 
 .mask img {
-	width: 300px;
+	width: 100%;
 	height: auto;
 	border-bottom-color:white!important;
 	border-top-color:none!important;
-	margin-right: 10%;
+	/*margin-right: 10%;*/
 	margin-bottom: -3px;
 }
 
