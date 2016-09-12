@@ -57,12 +57,12 @@
       <img src="turing-mask.png" class="screen">
 
       <div class="mask">
-      		<img src="trans.png" id="line6"/>
-      		<img src="trans.png" id="line5"/>
-      		<img src="trans.png" id="line4"/>
-      		<img src="trans.png" id="line3"/>
-      		<img src="trans.png" id="line2"/>
-      		<img src="trans.png" id="line1"/>
+      		<div class="img" id="line6"></div>
+      		<div class="img" id="line5"></div>
+      		<div class="img" id="line4"></div>
+      		<div class="img" id="line3"></div>
+      		<div class="img" id="line2"></div>
+      		<div class="img" id="line1"></div>
       	</div>
 
       <img src="turing.jpg" class="portrait">
@@ -102,7 +102,7 @@
          console.log(textblock);
    		  $(textblock).html(textline);
         $("#err").hide();
-        $("#story").show();
+        //$("#story").show();
         $(".mask").show();
         Recaptcha.reload();
           return false; 
@@ -116,7 +116,7 @@ counter = 0;
   function memory(){
 
   	counter = (counter + 1); 
-  	var imgblock= "line" + counter;
+  	var imgblock= "#line" + counter;
   	var img  = document.getElementById("recaptcha_challenge_image").src;
   	var text = document.getElementById("recaptcha_response_field").value;
     stanza.push([img]);
@@ -125,7 +125,15 @@ counter = 0;
   	
     for(var i=0; i<stanza.length; i++) {
 
-  		document.getElementById(imgblock).src = stanza[i++];
+  		//document.getElementById(imgblock).src = stanza[i++];
+  		//var image = document.getElementById(imgblock);
+  		var image = $(imgblock);
+
+  		var source = stanza[i++];
+  		var url = 'url('+source+')'
+  		image.css({background: url})
+  		  		//document.getElementById(imgblock).css = stanza[i++];
+
 
   		if(stanza.length >= 6){
   			counter = 0;

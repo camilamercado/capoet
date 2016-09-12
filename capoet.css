@@ -5,7 +5,8 @@ html {
 body {
 	font-family: "andale mono";
 	/*background-image: url(turing.jpg);*/
-	background: #626351;
+	/*background: #626351;*/
+	background: white;
 	/*position: fixed;*/
 	top: 0px;
 	width:100%;
@@ -32,42 +33,48 @@ body {
 	top: 40px;
 	left: 40px;
 	opacity: 0.6;
-	/*display: none;*/
+	display: none;
 
 }
 
 .formfield {
-	width: 48%;
-	min-width: 550px;
+
+	width: 500px;
 	height: 80%;
 	/*min-height: 900px;*/
-	background-color: whitesmoke;
+	background-color: transparent;
 	float: left;
-	position: absolute;
+	position: fixed;
 	z-index: 4;
 	top: 50px;
-	padding-top: 5%;
-	padding-left: 7%;
-	left: 50px;
+	padding-top: 10px;
+	padding-left: 0px;
+	left: 550px;
 	opacity: 1;
 }
 
+.formfield #story {
+	display: none;
+}
+
 .portrait {
-	height: 145%;
+	width: 465.516px;
+	height: 596.828;
 	position: fixed;
 	max-height: 1500px;
-	top: 0px;
-	right: -50px;
+	top: 50px;
+	left: 50px;
 	z-index: 1;
+
 
 }
 
 .screen {
-	height: 145%;
-	max-height: 1500px;
+	width: 465.516px;
+	height: 596.828;
 	position: fixed;
-	top: 0px;
-	right: -50px;
+	top: 50px;
+	left: 50px;
 	z-index: 3;
 
 }
@@ -94,22 +101,26 @@ p {
 }
 
 .mask {
-	width: 30%;
-	height: 100%;
+	width: 465.516px;
+	height: 596.828;
 	position: fixed;
-	right: 10%;
+	left: 50px;
 	top: 170px;
 	z-index: 2;
 	opacity: 0.7;
 }
 
-.mask img {
+.mask .img {
 	width: 100%;
-	height: auto;
+	height: 70px;
 	border-bottom-color:white!important;
 	border-top-color:none!important;
-	/*margin-right: 10%;*/
+	background: url(trans.png);
 	margin-bottom: -3px;
+	-webkit-transition: background 1s ease;
+	-moz-transition:    background 1s ease;
+	-opera-transition:  background 1s ease;
+
 }
 
 
